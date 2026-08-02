@@ -1,0 +1,19 @@
+<!--
+  Sysmon log collection for the Windows endpoint (WIN11, agent 002).
+
+  This <localfile> block goes in the agent's ossec.conf. On Windows that's:
+    C:\Program Files (x86)\ossec-agent\ossec.conf
+
+  It tells the Wazuh agent to read the Sysmon operational event channel and
+  ship those events to the manager. Without this block, Sysmon's rich
+  process-creation and network telemetry never reaches Wazuh, which is what
+  the encoded-PowerShell detection (rule 92057) depends on, since that alert
+  is built entirely off the full command line Sysmon captures.
+
+  Restart the agent after adding it (Restart-Service WazuhSvc).
+-->
+
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
