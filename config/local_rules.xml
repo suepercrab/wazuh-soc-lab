@@ -1,0 +1,25 @@
+<!--
+  Custom local rules for the Wazuh SOC Detection Lab.
+  On the Wazuh manager this file lives at:
+    /var/ossec/etc/rules/local_rules.xml
+ 
+  Rule 100100 detects an SSH brute force: 8+ failed logons within 60
+  seconds from the same source IP. It builds on the default sshd
+  "failed password" rule (SID 5760) and is scoped with <same_source_ip/>
+  so it only fires when a single source is hammering the host, not when
+  8 unrelated failures happen across the network in the same window.
+-->
+ 
+<group name="local,authentication_failures,">
+ 
+  <rule id="100100" level="12" frequency="8" timeframe="60">
+    <if_matched_sid>5760</if_matched_sid>
+    <same_source_ip/>
+    <description>Possible SSH brute force: 8+ failed logons in 60s from same source</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+  </rule>
+ 
+</group>
+ 
