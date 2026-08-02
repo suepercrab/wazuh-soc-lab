@@ -1,0 +1,6 @@
+*.ova
+*.vdi
+*.vmdk
+*.log
+.DS_Store
+Thumbs.db
