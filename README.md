@@ -8,6 +8,8 @@ A SOC detection lab built on Wazuh. I run real attacks against a Windows and a L
    
 ---
  
+**Contents:** [Environment](#environment) · [Endpoint visibility](#endpoint-visibility) · [SCA posture scan](#sca-posture-scan) · [Custom rule + active response](#custom-rule--active-response) · [Attacks detected](#attacks-detected) · [Triage](#triage) · [What I learned](#what-i-learned-and-whats-next)
+
 ## What's in here
  
 - Wazuh SIEM with a Windows and a Linux agent enrolled
@@ -98,7 +100,7 @@ Then bound a firewall drop active response to it with a 120 second timeout. When
  
 ---
  
-## Attack to detect
+## Attacks detected
  
 Each attack runs against the isolated lab, gets caught in Wazuh, and maps to a MITRE technique.
  
